@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import RequirementManagement from './components/RequirementManagement.vue'
+import { useRoute } from 'vue-router'
+import MainLayout from './components/MainLayout.vue'
+
+const route = useRoute()
 </script>
 
 <template>
-  <RequirementManagement />
+  <template v-if="route.path === '/login' || route.path === '/register'">
+    <router-view />
+  </template>
+  <template v-else>
+    <MainLayout />
+  </template>
 </template>
 
 <style>
@@ -23,6 +31,6 @@ body,
 
 body {
   font-family: Arial, sans-serif;
-  background-color: white;
+  background-color: #f5f5f5;
 }
 </style>
